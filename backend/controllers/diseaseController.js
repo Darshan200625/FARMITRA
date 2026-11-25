@@ -1,3 +1,4 @@
+
 const axios = require("axios");
 const FormData = require("form-data");
 const fs = require("fs");
@@ -11,30 +12,30 @@ const detectDisease = async (req, res) => {
       });
     }
 
+    const diseaseAIUrl = process.env.DISEASE_AI_URL;
+
+    if (!diseaseAIUrl) {
+      return res.status(500).json({
+        success: false,
+        message: "Disease AI server URL is not configured.",
+      });
+    }
+
     const form = new FormData();
 
-    form.append(
-      "image",
-      fs.createReadStream(req.file.path)
-    );
+    form.append("image", fs.createReadStream(req.file.path));
 
     const response = await axios.post(
-      "http://127.0.0.1:5001/predict",
+      `${diseaseAIUrl.replace(/\/$/, "")}/predict`,
       form,
       {
         headers: form.getHeaders(),
-        timeout: 60000,
+        timeout: 120000,
+        maxBodyLength: Infinity,
       }
     );
 
-    // Delete uploaded file after processing
-    fs.unlink(req.file.path, (err) => {
-      if (err) {
-        console.error("File delete error:", err);
-      }
-    });
-
-    res.json(response.data);
+    return res.json(response.data);
 
   } catch (err) {
     console.error(
@@ -42,16 +43,20 @@ const detectDisease = async (req, res) => {
       err.response?.data || err.message
     );
 
-    // Delete uploaded file if an error occurs
-    if (req.file) {
-      fs.unlink(req.file.path, () => {});
-    }
-
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: "Disease AI Server Error",
       error: err.response?.data || err.message,
     });
+
+  } finally {
+    if (req.file?.path) {
+      fs.unlink(req.file.path, (err) => {
+        if (err) {
+          console.error("File delete error:", err.message);
+        }
+      });
+    }
   }
 };
 
