@@ -23,7 +23,7 @@ function Dashboard() {
   const loadDashboard = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/dashboard"
+        "https://farmitra-bgf4.onrender.com/api/dashboard"
       );
 
       if (res.data.success) {

@@ -17,7 +17,7 @@ function FarmManagement() {
 
   const loadFarms = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/farms");
+      const res = await axios.get("https://farmitra-bgf4.onrender.com/api/farms");
       setFarms(res.data.farms);
     } catch (err) {
       console.log(err);
@@ -45,7 +45,7 @@ function FarmManagement() {
       }
 
       await axios.post(
-        "http://localhost:5000/api/farms",
+        "https://farmitra-bgf4.onrender.com/api/farms",
         formData
       );
 
@@ -94,7 +94,7 @@ function FarmManagement() {
       }
 
       await axios.put(
-        `http://localhost:5000/api/farms/${editingId}`,
+        `https://farmitra-bgf4.onrender.com/api/farms/${editingId}`,
         formData
       );
 
@@ -122,7 +122,7 @@ function FarmManagement() {
     if (!window.confirm("Delete Farm?")) return;
 
     await axios.delete(
-      `http://localhost:5000/api/farms/${id}`
+      `https://farmitra-bgf4.onrender.com/api/farms/${id}`
     );
 
     loadFarms();
@@ -203,7 +203,7 @@ function FarmManagement() {
 
             {farm.image && (
               <img
-                src={`http://localhost:5000/uploads/${farm.image}`}
+                src={`https://farmitra-bgf4.onrender.com/uploads/${farm.image}`}
                 alt="Farm"
                 className="w-full h-56 object-cover"
               />

@@ -19,7 +19,7 @@ function Weather() {
       setError("");
 
       const res = await axios.get(
-        `http://localhost:5000/api/weather/${encodeURIComponent(
+        `https://farmitra-bgf4.onrender.com/api/weather/${encodeURIComponent(
           city.trim()
         )}`
       );

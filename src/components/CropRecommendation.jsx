@@ -40,7 +40,7 @@ function CropRecommendation() {
       setResult(null);
 
       const response = await axios.post(
-        "http://localhost:5000/api/crop-ai",
+        "https://farmitra-bgf4.onrender.com/api/crop-ai",
         {
           N: Number(form.N),
           P: Number(form.P),

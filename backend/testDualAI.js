@@ -1,7 +1,7 @@
 
 require("dotenv").config();
 
-const API_URL = "http://localhost:5000/api/chat";
+const API_URL = "https://farmitra-bgf4.onrender.com/api/chat";
 
 async function testDualAI() {
 

@@ -22,7 +22,7 @@ function WeatherDashboard() {
 
     try {
       const url =
-        "http://localhost:5000/api/weather/" +
+        "https://farmitra-bgf4.onrender.com/api/weather/" +
         encodeURIComponent(city.trim());
 
       console.log("Calling:", url);
@@ -46,7 +46,7 @@ function WeatherDashboard() {
         );
       } else if (error.request) {
         setError(
-          "Cannot connect to backend. Check http://localhost:5000"
+          "Cannot connect to backend. Check https://farmitra-bgf4.onrender.com"
         );
       } else {
         setError(error.message);

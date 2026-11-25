@@ -22,7 +22,7 @@ function SmartIrrigation() {
       setRecommendation("");
 
       const res = await axios.post(
-        "http://localhost:5000/api/irrigation",
+        "https://farmitra-bgf4.onrender.com/api/irrigation",
         {
           moisture: Number(moisture),
         }

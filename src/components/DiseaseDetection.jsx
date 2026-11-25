@@ -33,7 +33,7 @@ function DiseaseDetection() {
       setLoading(true);
 
       const res = await axios.post(
-        "http://localhost:5000/api/disease",
+        "https://farmitra-bgf4.onrender.com/api/disease",
         formData,
         {
           headers: {

@@ -56,7 +56,7 @@ function MarketPrice() {
 
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/market",
+        "https://farmitra-bgf4.onrender.com/api/market",
         {
           params: {
             crop,

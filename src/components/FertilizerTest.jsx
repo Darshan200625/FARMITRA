@@ -11,7 +11,7 @@ function FertilizerTest() {
       setResult(null);
 
       const response = await axios.post(
-        "http://localhost:5000/api/fertilizer",
+        "https://farmitra-bgf4.onrender.com/api/fertilizer",
         {
           crop: "Ragi",
           nitrogen: 30,

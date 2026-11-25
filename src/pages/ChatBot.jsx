@@ -28,7 +28,7 @@ function ChatBot() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/chat",
+        "https://farmitra-bgf4.onrender.com/api/chat",
         {
           message: currentMessage,
         },
